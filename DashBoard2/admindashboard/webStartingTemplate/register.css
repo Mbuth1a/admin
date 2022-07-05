@@ -1,0 +1,12 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.header{
+    position: absolute;
+    height: 50px;
+    width: 100%;
+    background-color:#ff0000;
+}
+
+
