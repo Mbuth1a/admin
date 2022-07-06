@@ -35,10 +35,10 @@ if(isset($_POST['signup']))
 
         if($sql)
         {
-            $msg = "data submitted was succesfull";
+            $msg = "data submitted was successful";
         }
         else{
-            $msg= "error occured";
+            $msg= "error occurred";
         }
     }
     

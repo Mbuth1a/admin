@@ -1,7 +1,8 @@
 <?php require_once('auth.php')?>
 
    <div class="header">
-		<img src="images/zalegologo.jpg" alt="Zalego" height="50" width="50" class="rounded-circle">
+		<img src="images/zalegologo.jpg" alt="zalego" height="40" width="45" class="rounded-circle">
+		
           <!-- <span><?php echo $_SESSION['login']?></span>  -->
 		<a href="#" class="navbar-trigger"><span></span></a> 
 		

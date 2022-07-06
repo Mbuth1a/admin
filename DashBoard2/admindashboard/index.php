@@ -4,18 +4,8 @@ session_start();
 
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Bootstrap Admin Template</title>
-	<meta charset="UTF-8">
-	<meta name="description" content="Creating admin dashboard">
-	<meta name="keywords" content="HTML,CSS,Zalego,Technology,Zalego institute,JavaScript">
-	<meta name="author" content="Kibunja Franziska">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="style.css">
-	<?php require_once('includes/links.php')?>
-</head>
+<?php require_once('includes/links.php')
+?>
 <body>
 	<!-- All our code. write here   -->
 	<!-- beginning of header-->
@@ -88,9 +78,7 @@ session_start();
 		</div>         
 	</div>
 
-<script src="webStartingTemplate/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="/webStartingTemplate/bootstrap/js/bootstrap.min.js"></script>
-<script src="jquery.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
+
+<?php require_once('includes/scripts.php')?>
 </body>
 </html>

@@ -1,11 +1,6 @@
 <?php
-$server="localhost";
-$username="root";
-$password="";
-$database="zalego";
-
-$conn=mysqli_connect($server,$username,$password,$database);
-$sql= mysqli_query($conn, "SELECT *FROM enrollment");
+require_once('logics/dbconnection.php');
+$sql= mysqli_query($conn, "SELECT *FROM enrollment")
 ?>
 
 
@@ -16,7 +11,7 @@ $sql= mysqli_query($conn, "SELECT *FROM enrollment");
 	<meta charset="UTF-8">
 	<meta name="description" content="Creating admin dashboard">
 	<meta name="keywords" content="HTML,CSS,Zalego,Technology,Zalego institute,JavaScript">
-	<meta name="author" content="Franziska Kibunja">
+	<meta name="author" content="Peter Mbuthia">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
@@ -68,7 +63,7 @@ $sql= mysqli_query($conn, "SELECT *FROM enrollment");
                                     <td> <?php echo $fetchEnrollmentRecord['gender']  ?></td>
                                     <td> <?php echo $fetchEnrollmentRecord['course']  ?></td>
                                     <td>
-                                        <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                                        <a href="edit-enrollment.php?id=<?php echo $fetch["no"]?>" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
                                         <a href="#" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
                                         <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                     </td>
@@ -83,9 +78,6 @@ $sql= mysqli_query($conn, "SELECT *FROM enrollment");
 		</div>         
 	</div>
 
-<script src="webStartingTemplate/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="/webStartingTemplate/bootstrap/js/bootstrap.min.js"></script>
-<script src="jquery.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
+<?php require_once('includes/scripts.php')?>
 </body>
 </html>
