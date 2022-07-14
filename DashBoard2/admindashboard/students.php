@@ -1,6 +1,6 @@
 <?php
 require_once('logics/dbconnection.php');
-$sql= mysqli_query($conn, "SELECT *FROM enrollment")
+$sql= mysqli_query($conn, "SELECT *FROM signin")
 ?>
 
 
@@ -58,19 +58,20 @@ $sql= mysqli_query($conn, "SELECT *FROM enrollment")
                                 <tr>
                                     <td> <?php echo $fetchEnrollmentRecord['no']  ?></td>
                                     <td> <?php echo $fetchEnrollmentRecord['fullname']  ?></td>
-                                    <td> <?php echo $fetchEnrollmentRecord['phonenumber']  ?></td>
+                                    <td> <?php echo $fetchEnrollmentRecord['phone']  ?></td>
                                     <td> <?php echo $fetchEnrollmentRecord['email']  ?></td>
                                     <td> <?php echo $fetchEnrollmentRecord['gender']  ?></td>
                                     <td> <?php echo $fetchEnrollmentRecord['course']  ?></td>
                                     <td>
-                                        <a href="edit-enrollment.php?id=<?php echo $fetch["no"]?>" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
-                                        <a href="#" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
+                                        <a href="edit-enrollment.php?id=<?php echo $fetchEnrollmentRecord["no"]?>" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                                        <a href="view-enrollment.php" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
                                         <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>                            
                             </tr>                           
                                 </tr>                            
-                           <?php }?>                         
+                            
+                            <?php } ?>                        
                         </tbody>
                     </table>
                 </div>

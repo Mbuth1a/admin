@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-//database connection
-require_once('connection.php');
-
+// //database connection
+// require_once('connection.php');
+    
 if(isset($_POST['login']))
 {
     //fetch form data
@@ -31,6 +31,36 @@ if(isset($_POST['login']))
 
     }
 }
+{
+$server="localhost";
+$username="root";
+$password="";
+$database="zalego";
+
+$conn=mysqli_connect($server,$username,$password,$database);
+if($conn)
+{
+    echo 'success';
+}
+else
+{
+    echo 'unsuccessful' .mysqli_error($conn);
+;}
+
+$sql= mysqli_query($conn, "SELECT *FROM signin");
+    while ($fetchRecord=mysqli_fetch_array($sql))
+    {
+        echo
+        $fetchRecord['fullname'].
+        $fetchRecord['phone'].
+        $fetchRecord['email'].
+        $fetchRecord['gender'].
+        $fetchRecord['course'];
+}
+
+}
+
+
 ?>
 
 <!DOCTYPE html>
