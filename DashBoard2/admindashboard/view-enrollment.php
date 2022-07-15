@@ -6,15 +6,14 @@ $password="";
 $database="zalego";
 
 $conn=mysqli_connect($server,$username,$password,$database);
-    $sqlfetchstudent = mysqli_query($conn,
+    $sqlfetchenrolledstudent = mysqli_query($conn,
     "SELECT * FROM signin WHERE no ='".$_GET['id']."' ");
-    while ($fetchstudent= mysqli_fetch_array($sqlfetchstudent)){
+    while ($fetchstudent= mysqli_fetch_array($sqlfetchenrolledstudent)){
         $fullname =$fetchstudent['fullname'];
         $phone =$fetchstudent['phone'];
         $email =$fetchstudent['email'];
         $gender =$fetchstudent['gender'];
         $course =$fetchstudent['course'];
-        $createdat =$fetchstudent['created_at'];
     }
 ?>
 
@@ -58,29 +57,18 @@ $conn=mysqli_connect($server,$username,$password,$database);
                         </div>
                         <div class="card-body p-5">
                             <ul class="list-group">
-                                <li class="list-group-item">Full Name: <span><?php echo "$fullname"?></span></li>
-                                <li class="list-group-item">Phone: <span><?php echo "$phone"?></span></li>
-                                <li class="list-group-item">Email: <span><?php echo "$email"?></span></li>
-                            </ul>
-
-                            
-                        </div>
-                            
-                    </div>
-                    
-                </div>
+                                <li class="list-group-item">Full Name: <span <?php echo $f 
                 <div class="col-lg-6">
-                    <div class="card">
-                        <div class="header bg-dark text-white">
+                    <div class "card">
+                        <div class "header bg-dark text-white">
                             <h4 class="card-title">Personal Information</h4>
                             
 
                         </div>
-                        <div class="card-body p-5">
+                        <div class "card-body p-5" >
                             <ul class="list-group">
-                                <li class="list-group-item">Gender: <span><?php echo "$gender"?></span></li>
-                                <li class="list-group-item">Course: <span><?php echo "$course"?></span></li>
-                                <li class="list-group-item">Enrolled on: <span><?php echo "$createdat"?></span></li>
+                                <li class="list-group-item">Gender: <span <?php echo $gender?>></span></li>
+                                <li class="list-group-item">Course: <span <?php echo $course?>></span></li>
                             </ul>
 
                             
