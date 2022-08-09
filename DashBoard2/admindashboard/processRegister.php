@@ -1,6 +1,6 @@
 <?php
-require_once('connection.php');
-if(isset($_POST['signup']))
+require_once('dbconnection.php');
+if(isset($_POST['signin']))
 {
     //fetch form-data
     $username=$_POST['username'];
@@ -10,15 +10,15 @@ if(isset($_POST['signup']))
     $passHash=md5($password);
     
 
-    $sqlusername=mysqli_query($conn, "SELECT * FROM account  WHERE username = '$username' ");
+    $sqlusername=mysqli_query($conn, "SELECT * FROM signin  WHERE username = '$username' ");
     $checkusername=mysqli_num_rows($sqlusername);
 
-    $sqlEmail = mysqli_query($conn, "SELECT * FROM account WHERE email = '$email' ");
+    $sqlEmail = mysqli_query($conn, "SELECT * FROM signin WHERE email = '$email' ");
     $checkEmail = mysqli_num_rows($sqlEmail);
     if($checkEmail !=0){
         $msg = "username already exist";
     }
-    elseif($checkEmail !=0){
+    elseif($checkEmail !=0){                                                                                                                                                            
         $msg= "Email already in use. please try a different email address";
     }
     
@@ -31,7 +31,7 @@ if(isset($_POST['signup']))
     //submit data to database table
     else{
         //create insert query
-        $sql= mysqli_query($conn, "INSERT INTO account(username,email,password)VALUES('$username','$email','$passHash') ");
+        $sql= mysqli_query($conn, "INSERT INTO logini (username,email,password)VALUES('$username','$email','$passHash') ");
 
         if($sql)
         {

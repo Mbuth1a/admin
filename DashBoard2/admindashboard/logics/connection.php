@@ -11,8 +11,8 @@ if($conn)
 }
 else
 {
-    echo 'unsuccessful' .mysqli_error($conn);
-;}
+    echo 'unsuccessful' ;
+}
 
 $sql= mysqli_query($conn, "SELECT *FROM signin");
     while ($fetchRecord=mysqli_fetch_array($sql))

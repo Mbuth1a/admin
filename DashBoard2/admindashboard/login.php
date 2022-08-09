@@ -12,7 +12,7 @@ if(isset($_POST['login']))
     $newPass =md5($password);
 
     //perform the sql query
-    $sql = mysqli_query($conn, "SELECT *FROM account WHERE username= '$username' and password='$newPass'");
+    $sql = mysqli_query($conn, "SELECT *FROM subscribers WHERE username= '$username' and password='$newPass'");
     $fetch = mysqli_fetch_array($sql);
 
     if($fetch > 0)
@@ -44,7 +44,7 @@ if($conn)
 }
 else
 {
-    echo 'unsuccessful' .mysqli_error($conn);
+    echo 'unsuccessful';
 ;}
 
 $sql= mysqli_query($conn, "SELECT *FROM signin");
@@ -80,31 +80,35 @@ $sql= mysqli_query($conn, "SELECT *FROM signin");
     <br>
     <br>
     <br>
-    <div class="sub-header" style="text-align:center">
-        <img src="images/zalegologo.jpg" alt="Zalego" height="100" width="100" class="rounded-circle">
-    </div>
-    <div class="container">
-        <div class="shadow-lg p-3 mb-5 bg-body rounded">
-            <form>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <label for="exampleFormControlInput1" class="form-label">Username:</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="col-lg-12">
-                        <label for="inputpassword" class="form-label">Password:</label>
-                        <input type="password" class="form-control" id="inputpassword">
-                    </div>                  
-                </div>
+    <div class="container p-5">
+        <div class="row ">
+            <img src="zalda.jpg" alt="zalego training-Admin log in" class="mx-auto rounded-circle p-3">
+        </div>
+
+      <form action="login.php" method="POST"> 
+        <div class="card mx-auto col-md-7">
+            <div class="card-body">
+                <div class="form-floating pt-3">
+                    <label for="floatingInput">username</label>
+                    <input type="text" class="form-control" id="floatingInput" name="username" placeholder="">
+                  </div>
+                  <div class="form-floating pt-3">
+                    <label for="floatingPassword">Password</label>
+                    <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="">
+                  </div>
+                  <div class="pt-3">
+                    <input class="btn btn-primary" type="submit" name="login" value="login">
+                  </div>
+                  <div>
                 <button type="submit" class="btn btn-primary">submit</button>
                 <div class="col-lg-12">
-                    <span>Have no account?Sign up </span> <a href="#"> Here</a>
+                    <span>Have no account?Sign up </span> <a href="register.php" class="linknav active"> Here</a>
                 </div>   
             </form>
 
         </div>
 
-    </div>
+    
 
     <script src="webStartingTemplate/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/webStartingTemplate/bootstrap/js/bootstrap.min.js"></script>

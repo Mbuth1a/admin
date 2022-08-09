@@ -45,29 +45,37 @@ $sql= mysqli_query($conn, "SELECT *FROM contactus")
                                 <th >Last name</th>
                                 <th >Phone</th>
                                 <th >Email</th>
-                                <th >Message</th>                
+                                <th >Message</th>
+                                <th>Sent on ...</th>
+                                <th>Action</th>                
                       
                             </tr>
                         </thead>
                         <tbody>
-                            <?php while($fetchEnrollmentRecord= mysqli_fetch_array($sql)) { ?>
-                                <tr>
+                            <?php $count=1;
+                             while($fetchEnrollmentRecord= mysqli_fetch_array($sql)) { ?>
+                                <tr><td><?php echo $count ?></td>
                                     <td> <?php echo $fetchEnrollmentRecord['no']  ?></td>
                                     <td> <?php echo $fetchEnrollmentRecord['firstname']  ?></td>
                                     <td> <?php echo $fetchEnrollmentRecord['lastname']  ?></td>
                                     <td> <?php echo $fetchEnrollmentRecord['phonenumber']  ?></td>
                                     <td> <?php echo $fetchEnrollmentRecord['email']  ?></td>
                                     <td> <?php echo $fetchEnrollmentRecord['message']  ?></td>
-                                    <td>
-                                        
+                                    <td> <?php echo $fetchEnrollmentRecord['created_at']?></td> 
+                                        <td>
+                                            <a href="editcontactus.php?id=<?php echo $fetchEnrollmentRecord['no'] ?>" class="btn btn-primary btn-sm text-white"><i class="fa fa-pencil"></i></a>
+                                            <a href="viewcontactus.php?id=<?php echo $fetchEnrollmentRecord['no'] ?>" class="btn btn-info btn-sm text-white"><i class="fa fa-eye"></i></a>
+                                            <a href="deletecontactus.php?id=<?php echo $fetchEnrollmentRecord['no'] ?>" class="btn btn-danger btn-sm text-white"><i class="fa fa-trash"></i></a>
+                                        </td>
                                 </tr>                                              
                             
-                            <?php } ?>                        
+                            <?php $count++; } ?>                        
                         </tbody>
                     </table>
                 </div>
             </div>
 		</div>         
 	</div>
+<?php require_once('includes/scripts.php')?>
 </body>
 </html>

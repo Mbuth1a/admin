@@ -1,89 +1,65 @@
 <?php
-    // database connection
-$server="localhost";
-$username="root";
-$password="";
-$database="zalego";
+require_once('logics/connection.php');
 
-$conn=mysqli_connect($server,$username,$password,$database);
-    $sqlfetchenrolledstudent = mysqli_query($conn,
-    "SELECT * FROM signin WHERE no ='".$_GET['id']."' ");
-    while ($fetchstudent= mysqli_fetch_array($sqlfetchenrolledstudent)){
-        $fullname =$fetchstudent['fullname'];
-        $phone =$fetchstudent['phone'];
-        $email =$fetchstudent['email'];
-        $gender =$fetchstudent['gender'];
-        $course =$fetchstudent['course'];
-    }
+$sqlFetchEnrolledStudents = mysqli_query($conn, "SELECT * FROM enrollment WHERE no='".$_GET['id']."' ");
+
+while($fetchStudent = mysqli_fetch_array($sqlFetchEnrolledStudents))
+{
+    $fullName = $fetchStudent['fullname'];
+    $email = $fetchStudent['email'];
+    $phone = $fetchStudent['phonenumber'];
+    $gender = $fetchStudent['gender'];
+    $course = $fetchStudent['course'];
+    $enrolledOn = $fetchStudent['created_at'];
+}
+
 ?>
-
-
-
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Bootstrap Admin Template</title>
-	<meta charset="UTF-8">
-	<meta name="description" content="Creating admin dashboard">
-	<meta name="keywords" content="HTML,CSS,Zalego,Technology,Zalego institute,JavaScript">
-	<meta name="author" content="Peter Mbuthia">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="style.css">
-    
-</head>
-<body>
-	<!-- All our code. write here   -->
-	 <div class="header">
-        <a href="index.php">
-		<img src="images/zalegologo.jpg" alt="Zalego" height="50" width="50" class=" mx-auto rounded-circle"> 
-		</a>
-	</div> 
-    <br>
-	<!-- sidebar starts -->
-	<?php require_once('includes/sidebar.php') ?>
-	<!-- sidebar ends -->
 
+<?php require_once('includes/head.php') ?>
+
+<body>
+	<?php require_once('includes/navbar.php') ?>
+
+	<?php require_once('includes/sidebar.php') ?>
 	<div class="main-content">
 		<div class="container-fluid">
 			<div class="row">
                 <div class="col-lg-6">
-                    <div class="card">
-                        <div class="header bg-dark text-white">
-                            <h4 class="card-title">Personal Information</h4>
-                            
-
+                    <div class="card rounded-3 shadow">
+                        <div class="card-header text-center bg-dark  text-light">
+                            <a href="students.php"><button class="btn btn-secondary float-start"><i class="fa fa-arrow-left float-start"></i></button></a>
+                            <h4 class="card-title"><?php echo $fullName ?>'s Personal Info:</h4>
                         </div>
-                        <div class="card-body p-5">
+                        <div class="card-body">
                             <ul class="list-group">
-                                <li class="list-group-item">Full Name: <span <?php echo $f 
-                <div class="col-lg-6">
-                    <div class "card">
-                        <div class "header bg-dark text-white">
-                            <h4 class="card-title">Personal Information</h4>
-                            
+                                <li class="list-group-item">Full Name: <span class="float-end badge bg-primary"><?php echo $fullName ?></span></li>
+                                <li class="list-group-item">Email: <span class="float-end badge bg-primary"><?php echo $email ?></span></li>
+                                <li class="list-group-item">Phone Number: <span class="float-end badge bg-primary"><?php echo $phone ?></span></li>
 
-                        </div>
-                        <div class "card-body p-5" >
-                            <ul class="list-group">
-                                <li class="list-group-item">Gender: <span <?php echo $gender?>></span></li>
-                                <li class="list-group-item">Course: <span <?php echo $course?>></span></li>
                             </ul>
-
-                            
                         </div>
-                            
                     </div>
-                    
                 </div>
-
+                <div class="col-lg-6">
+                    <div class="card rounded-3 shadow">
+                        <div class="card-header text-center bg-dark  text-light">
+                            <h4 class="card-title">Other Info:</h4>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group">
+                                <li class="list-group-item">Gender: <span class="float-end badge bg-primary"><?php echo $gender ?></span></li>
+                                <li class="list-group-item">Course: <span class="float-end badge bg-primary"><?php echo $course ?></span></li>
+                                <li class="list-group-item">Enrolled on: <span class="float-end badge bg-primary"><?php echo $enrolledOn ?></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-         </div>
-	</div>         
+		</div>
+	</div>
 	
-
-<?php require_once('includes/scripts.php')?>
+	<?php require_once('includes/scripts.php') ?>
 </body>
 </html>
